@@ -1,0 +1,10 @@
+{
+  "EmptyInput": "Sorry, you entered nothing, please try again",
+  "InvalidInput": "Sorry, you entered an invalid input, please try again",
+  "MenuHeader": "\nWelcome to the Contoso PetFriends app. Your main menu options are:",
+  "MenuOptions": "\n\t1. List all of our current pet information\n\t2. Add a new animal friend to the ourAnimals array\n\t3. Ensure animal ages and physical descriptions are complete\n\t4. Ensure animal nicknames and personality descriptions are complete\n\t5. Edit an animal's age\n\t6. Edit an animal's personality description\n\t7. Display all CATS with a specified characteristic\n\t8. Display all DOGS with a specified characteristic",
+  "ExitInput": "Enter your selection number (or type Exit to exit the program)",
+  "SelectedOption": "You selected menu option ",
+  "NotificationPressToContinue": "Press the Enter key continue",
+  "ThisFeatureInDeveloping": "This app feature is coming soon"
+}
