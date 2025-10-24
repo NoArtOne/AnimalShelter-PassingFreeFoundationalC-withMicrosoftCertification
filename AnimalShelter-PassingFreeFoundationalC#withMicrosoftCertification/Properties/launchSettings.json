@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "AnimalShelter-PassingFreeFoundationalC#withMicrosoftCertification": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
