@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11121.172 d18.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalShelter-PassingFreeFoundationalCSharpWithMSCertification", "AnimalShelter-PassingFreeFoundationalCSharpWithMSCertification.csproj", "{B4B70667-7F72-D996-607D-B73B1797219A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4B70667-7F72-D996-607D-B73B1797219A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4B70667-7F72-D996-607D-B73B1797219A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4B70667-7F72-D996-607D-B73B1797219A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4B70667-7F72-D996-607D-B73B1797219A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2F5923D8-D722-4EF4-B700-B95481D7F092}
+	EndGlobalSection
+EndGlobal
