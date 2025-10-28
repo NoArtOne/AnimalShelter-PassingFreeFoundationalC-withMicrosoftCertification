@@ -25,5 +25,16 @@ internal class RepeatedPrintText()
         Console.WriteLine($"{root.GetProperty("InputAnyKeyToContinue").GetString()}");
         Console.ReadKey();
     }
+
+    public static string ValidateForEmptyReadInput(JsonElement root)
+    {
+        string? input = Console.ReadLine();
+        if (string.IsNullOrWhiteSpace(input))
+        {
+            Console.WriteLine(root.GetProperty("EmptyInput").GetString());
+            return null;
+        }
+        return input;
+    }
 }
 

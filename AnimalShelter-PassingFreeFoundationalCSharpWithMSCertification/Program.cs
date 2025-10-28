@@ -51,7 +51,8 @@ while (!exit)
             }
             printer.PrintInputAnyToContinue(root);
             break;
-        case "2": // Добавьте нового друга-животное в массив ourAnimals
+
+        case "2": // Добавление нового животного в массив ourAnimals
             printer.PrintUserOption(root, readResult);
             int petCount = 0;
             for (int i = 0; i < AnimalFactory.MaxPets; i++)
@@ -83,7 +84,13 @@ while (!exit)
                         case "y":
                             petCount += 1;
                             if (petCount >= AnimalFactory.MaxPets)
-                                Console.WriteLine($"{root.GetProperty("ReachedLimitPetsInShelter").GetString()}"); break;
+                                Console.WriteLine($"{root.GetProperty("ReachedLimitPetsInShelter").GetString()}");
+                            else
+                            {
+                                Console.WriteLine("Enter 'dog' or 'cat' to begin a new entry");
+                                string selectedAnimalSpecies = RepeatedPrintText.ValidateForEmptyReadInput(root);
+                            }
+                                break;
                         case "n":
                             exitOptionTwo = true;
                             break;
@@ -97,11 +104,11 @@ while (!exit)
             }
             else
             {
-                Console.WriteLine($"{root.GetProperty("ReachedLimitPetsInShelter").GetString()}"); break;
+                Console.WriteLine($"{root.GetProperty("ReachedLimitPetsInShelter").GetString()}"); 
                 printer.PrintInputAnyToContinue(root);
             }
-            printer.PrintInputAnyToContinue(root);
             break;
+
         case "3":
             printer.PrintOptionInDevelop(root, readResult);
             break;
