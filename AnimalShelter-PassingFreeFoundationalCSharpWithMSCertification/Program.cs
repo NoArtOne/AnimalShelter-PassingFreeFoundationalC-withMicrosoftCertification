@@ -31,14 +31,15 @@ while (!exit)
 
     switch (readResult)
     {
-        case "1":
+        case "1": // Вывод информации о всех животных в приюте
             printer.PrintUserOption(root, readResult);
             for (int i = 0; i < AnimalFactory.MaxPets; i++)
             {
                 if (ourAnimals[i].AnimalID != null)
                 {
                     Console.WriteLine(
-                        "ID: {0} \nNickname: {1} \nPersonality: {2} \nPhysical: {3} \nAge: {4} \nSpecies: {5}\n",
+                        "ID: {0} \nNickname: {1} \nPersonality: {2} \n" +
+                        "Physical: {3} \nAge: {4} \nSpecies: {5}\n",
                         ourAnimals[i].AnimalID,
                         ourAnimals[i].AnimalNickname,
                         ourAnimals[i].AnimalPersonalityDescription,
@@ -48,13 +49,58 @@ while (!exit)
                         );
                 }
             }
-            Console.WriteLine($"" +
-                $"{root.GetProperty("InputAnyKeyToContinue").GetString()}"
-            );
-            Console.ReadKey();
+            printer.PrintInputAnyToContinue(root);
             break;
-        case "2":
-            printer.PrintOptionInDevelop(root, readResult);
+        case "2": // Добавьте нового друга-животное в массив ourAnimals
+            printer.PrintUserOption(root, readResult);
+            int petCount = 0;
+            for (int i = 0; i < AnimalFactory.MaxPets; i++)
+            {
+                if (ourAnimals[i].AnimalID != null)
+                {
+                    petCount += 1;
+                }
+            }
+
+            if (petCount < AnimalFactory.MaxPets)
+            {
+                bool exitOptionTwo = false;
+                while (petCount < AnimalFactory.MaxPets && exitOptionTwo == false)
+                {
+                    Console.WriteLine($"We currently have {petCount} pets that need homes. " +
+                   $"We can manage {(AnimalFactory.MaxPets - petCount)} more.");
+                    Console.WriteLine("Do you want to enter info for another pet (y/n)");
+
+                    string readResultFromOptionTwo = Console.ReadLine();
+                    if (readResultFromOptionTwo == null)
+                    {
+                        Console.WriteLine($"{root.GetProperty("EmptyInput").GetString()}");
+                        continue;
+                    }
+
+                    switch (readResultFromOptionTwo)
+                    {
+                        case "y":
+                            petCount += 1;
+                            break;
+
+                        case "n":
+                            exitOptionTwo = true;
+                            break;
+
+                        default:
+                            Console.WriteLine($"{root.GetProperty("InvalidInput").GetString()}");
+                            break;
+                    }
+                }
+           
+            }
+            else
+            {
+                Console.WriteLine("We have reached our limit on the number of pets that we can manage.");
+                printer.PrintInputAnyToContinue(root);
+            }
+            printer.PrintInputAnyToContinue(root);
             break;
         case "3":
             printer.PrintOptionInDevelop(root, readResult);

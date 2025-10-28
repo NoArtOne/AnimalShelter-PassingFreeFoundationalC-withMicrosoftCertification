@@ -6,9 +6,9 @@ using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Helpers;
-internal class RepeatedPrintText
+internal class RepeatedPrintText()
 {
-    public void PrintOptionInDevelop(JsonElement root, string readResult) 
+    public void PrintOptionInDevelop(JsonElement root, string readResult)
     {
         Console.WriteLine($"{root.GetProperty("SelectedOption").GetString()}{readResult}.");
         Console.WriteLine($"{root.GetProperty("ThisFeatureInDeveloping").GetString()}");
@@ -18,6 +18,12 @@ internal class RepeatedPrintText
     {
         Console.WriteLine($"{root.GetProperty("SelectedOption").GetString()}{readResult}.");
 
+    }
+
+    public void PrintInputAnyToContinue(JsonElement root)
+    {
+        Console.WriteLine($"{root.GetProperty("InputAnyKeyToContinue").GetString()}");
+        Console.ReadKey();
     }
 }
 
