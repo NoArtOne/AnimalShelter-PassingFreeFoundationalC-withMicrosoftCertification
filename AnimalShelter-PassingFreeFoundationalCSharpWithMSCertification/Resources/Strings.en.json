@@ -7,5 +7,6 @@
   "SelectedOption": "You selected menu option ",
   "NotificationPressToContinue": "Press the Enter key continue",
   "ThisFeatureInDeveloping": "This app feature is coming soon",
-  "InputAnyKeyToContinue":  "Press the Enter key to continue."
+  "InputAnyKeyToContinue": "Press the Enter key to continue.",
+  "ReachedLimitPetsInShelter": "We have reached our limit on the number of pets that we can manage."
 }

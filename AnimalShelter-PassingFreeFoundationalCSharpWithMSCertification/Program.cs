@@ -82,8 +82,8 @@ while (!exit)
                     {
                         case "y":
                             petCount += 1;
-                            break;
-
+                            if (petCount >= AnimalFactory.MaxPets)
+                                Console.WriteLine($"{root.GetProperty("ReachedLimitPetsInShelter").GetString()}"); break;
                         case "n":
                             exitOptionTwo = true;
                             break;
@@ -97,7 +97,7 @@ while (!exit)
             }
             else
             {
-                Console.WriteLine("We have reached our limit on the number of pets that we can manage.");
+                Console.WriteLine($"{root.GetProperty("ReachedLimitPetsInShelter").GetString()}"); break;
                 printer.PrintInputAnyToContinue(root);
             }
             printer.PrintInputAnyToContinue(root);
