@@ -6,5 +6,6 @@
   "ExitInput": "Enter your selection number (or type Exit to exit the program)",
   "SelectedOption": "You selected menu option ",
   "NotificationPressToContinue": "Press the Enter key continue",
-  "ThisFeatureInDeveloping": "This app feature is coming soon"
+  "ThisFeatureInDeveloping": "This app feature is coming soon",
+  "InputAnyKeyToContinue":  "Press the Enter key to continue."
 }

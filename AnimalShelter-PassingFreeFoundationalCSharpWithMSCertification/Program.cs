@@ -1,0 +1,84 @@
+﻿using Factory;
+using Helpers;
+using Helpers;
+using Models;
+using System;
+using System.IO;
+using System.IO.Pipelines;
+using System.Reflection;
+using System.Text.Json;
+
+string jsonPath = Path.Combine(AppContext.BaseDirectory, "Resources", "Strings.en.json");
+using JsonDocument doc = JsonDocument.Parse(File.ReadAllText(jsonPath));
+JsonElement root = doc.RootElement;
+
+string? readResult;
+bool exit = false;
+
+var ourAnimals = AnimalFactory.CreateSampleAnimals();
+
+while (!exit)
+{
+    Console.WriteLine($"{root.GetProperty("MenuHeader").GetString()}{root.GetProperty("MenuOptions").GetString()}");
+    Console.WriteLine($"{root.GetProperty("ExitInput").GetString()}");
+    readResult = Console.ReadLine();
+    if (readResult == null) 
+    {
+        Console.WriteLine($"{root.GetProperty("EmptyInput").GetString()}");
+        continue;
+    }
+    RepeatedPrintText printer = new();
+
+    switch (readResult)
+    {
+        case "1":
+            printer.PrintUserOption(root, readResult);
+            for (int i = 0; i < AnimalFactory.MaxPets; i++)
+            {
+                if (ourAnimals[i].AnimalID != null)
+                {
+                    Console.WriteLine(
+                        "ID: {0} \nNickname: {1} \nPersonality: {2} \nPhysical: {3} \nAge: {4} \nSpecies: {5}\n",
+                        ourAnimals[i].AnimalID,
+                        ourAnimals[i].AnimalNickname,
+                        ourAnimals[i].AnimalPersonalityDescription,
+                        ourAnimals[i].AnimalPhysicalDescription,
+                        ourAnimals[i].AnimalAge,
+                        ourAnimals[i].AnimalSpecies
+                        );
+                }
+            }
+            Console.WriteLine($"" +
+                $"{root.GetProperty("InputAnyKeyToContinue").GetString()}"
+            );
+            Console.ReadKey();
+            break;
+        case "2":
+            printer.PrintOptionInDevelop(root, readResult);
+            break;
+        case "3":
+            printer.PrintOptionInDevelop(root, readResult);
+            break;
+        case "4":
+            printer.PrintOptionInDevelop(root, readResult);
+            break;
+        case "5":
+            printer.PrintOptionInDevelop(root, readResult);
+            break;
+        case "6":
+            printer.PrintOptionInDevelop(root, readResult);
+            break;
+        case "7":
+            printer.PrintOptionInDevelop(root, readResult);
+            break;
+        case "8":
+            printer.PrintOptionInDevelop(root, readResult);
+            break;
+        case "exit":
+            exit = true;
+            break;
+        default:
+            Console.WriteLine($"{root.GetProperty("InvalidInput").GetString()}");
+            break;
+    }    
+}

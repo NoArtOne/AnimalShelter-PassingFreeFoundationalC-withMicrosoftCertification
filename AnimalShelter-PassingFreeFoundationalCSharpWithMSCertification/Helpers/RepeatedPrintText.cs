@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO.Pipelines;
+using System.Linq;
+using System.Text.Json;
+using System.Threading.Tasks;
+
+namespace Helpers;
+internal class RepeatedPrintText
+{
+    public void PrintOptionInDevelop(JsonElement root, string readResult) 
+    {
+        Console.WriteLine($"{root.GetProperty("SelectedOption").GetString()}{readResult}.");
+        Console.WriteLine($"{root.GetProperty("ThisFeatureInDeveloping").GetString()}");
+        Console.WriteLine($"{root.GetProperty("NotificationPressToContinue").GetString()}");
+    }
+    public void PrintUserOption(JsonElement root, string readResult)
+    {
+        Console.WriteLine($"{root.GetProperty("SelectedOption").GetString()}{readResult}.");
+
+    }
+}
+
