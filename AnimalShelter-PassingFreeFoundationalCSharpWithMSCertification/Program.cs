@@ -1,137 +1,148 @@
-﻿using Factory;
-using Helpers;
-using Helpers;
-using Models;
-using System;
-using System.IO;
-using System.IO.Pipelines;
-using System.Reflection;
-using System.Text.Json;
+﻿using ConsoleView.Views;
+using ConsoleView.ViewsInput;
 
-string jsonPath = Path.Combine(AppContext.BaseDirectory, "Resources", "Strings.en.json");
-using JsonDocument doc = JsonDocument.Parse(File.ReadAllText(jsonPath));
-JsonElement root = doc.RootElement;
 
-string? readResult;
 bool exit = false;
-
-var ourAnimals = AnimalFactory.CreateSampleAnimals();
 
 while (!exit)
 {
-    Console.WriteLine($"{root.GetProperty("MenuHeader").GetString()}{root.GetProperty("MenuOptions").GetString()}");
-    Console.WriteLine($"{root.GetProperty("ExitInput").GetString()}");
-    readResult = Console.ReadLine();
-    if (readResult == null) 
-    {
-        Console.WriteLine($"{root.GetProperty("EmptyInput").GetString()}");
-        continue;
-    }
-    RepeatedPrintText printer = new();
+    new ViewWelcomeHeader().Show();
 
-    switch (readResult)
-    {
-        case "1": // Вывод информации о всех животных в приюте
-            printer.PrintUserOption(root, readResult);
-            for (int i = 0; i < AnimalFactory.MaxPets; i++)
-            {
-                if (ourAnimals[i].AnimalID != null)
-                {
-                    Console.WriteLine(
-                        "ID: {0} \nNickname: {1} \nPersonality: {2} \n" +
-                        "Physical: {3} \nAge: {4} \nSpecies: {5}\n",
-                        ourAnimals[i].AnimalID,
-                        ourAnimals[i].AnimalNickname,
-                        ourAnimals[i].AnimalPersonalityDescription,
-                        ourAnimals[i].AnimalPhysicalDescription,
-                        ourAnimals[i].AnimalAge,
-                        ourAnimals[i].AnimalSpecies
-                        );
-                }
-            }
-            printer.PrintInputAnyToContinue(root);
-            break;
+    var userSelectedOption = new ViewInput().Show();
+    if (userSelectedOption == null) continue;
 
-        case "2": // Добавление нового животного в массив ourAnimals
-            printer.PrintUserOption(root, readResult);
-            int petCount = 0;
-            for (int i = 0; i < AnimalFactory.MaxPets; i++)
-            {
-                if (ourAnimals[i].AnimalID != null)
-                {
-                    petCount += 1;
-                }
-            }
 
-            if (petCount < AnimalFactory.MaxPets)
-            {
-                bool exitOptionTwo = false;
-                while (petCount < AnimalFactory.MaxPets && exitOptionTwo == false)
-                {
-                    Console.WriteLine($"We currently have {petCount} pets that need homes. " +
-                   $"We can manage {(AnimalFactory.MaxPets - petCount)} more.");
-                    Console.WriteLine("Do you want to enter info for another pet (y/n)");
+    //string headInputKey.Show();
+    //if (headInputKey.Show() == null) continue;
 
-                    string readResultFromOptionTwo = Console.ReadLine();
-                    if (readResultFromOptionTwo == null)
-                    {
-                        Console.WriteLine($"{root.GetProperty("EmptyInput").GetString()}");
-                        continue;
-                    }
+    //RepeatedPrintText printer = new();
 
-                    switch (readResultFromOptionTwo)
-                    {
-                        case "y":
-                            petCount += 1;
-                            if (petCount >= AnimalFactory.MaxPets)
-                                Console.WriteLine($"{root.GetProperty("ReachedLimitPetsInShelter").GetString()}");
-                            else
-                            {
-                                Console.WriteLine("Enter 'dog' or 'cat' to begin a new entry");
-                                string selectedAnimalSpecies = RepeatedPrintText.ValidateForEmptyReadInput(root);
-                            }
-                                break;
-                        case "n":
-                            exitOptionTwo = true;
-                            break;
+    //switch (readResult)
+    //{
+    //    case "1": // Вывод информации о всех животных в приюте
+    //        printer.PrintUserOption(root, readResult);
+    //        for (int i = 0; i < AnimalFactory.MaxPets; i++)
+    //        {
+    //            if (_animals[i].AnimalID != null)
+    //            {
+    //                Console.WriteLine(
+    //                    "ID: {0} \nNickname: {1} \nPersonality: {2} \n" +
+    //                    "Physical: {3} \nAge: {4} \nSpecies: {5}\n",
+    //                    _animals[i].AnimalID,
+    //                    _animals[i].AnimalNickname,
+    //                    _animals[i].AnimalPersonalityDescription,
+    //                    _animals[i].AnimalPhysicalDescription,
+    //                    _animals[i].AnimalAge,
+    //                    _animals[i].AnimalSpecies
+    //                    );
+    //            }
+    //        }
+    //        printer.PrintInputAnyToContinue(root);
+    //        break;
 
-                        default:
-                            Console.WriteLine($"{root.GetProperty("InvalidInput").GetString()}");
-                            break;
-                    }
-                }
-           
-            }
-            else
-            {
-                Console.WriteLine($"{root.GetProperty("ReachedLimitPetsInShelter").GetString()}"); 
-                printer.PrintInputAnyToContinue(root);
-            }
-            break;
+    //    case "2": // Добавление нового животного в массив _animals
+    //        printer.PrintUserOption(root, readResult);
+    //        int petCount = 0;
+    //        for (int i = 0; i < AnimalFactory.MaxPets; i++)
+    //        {
+    //            if (_animals[i].AnimalID != null)
+    //            {
+    //                petCount += 1;
+    //            }
+    //        }
+    //        if (petCount >= AnimalFactory.MaxPets)
+    //        {
+    //            Console.WriteLine($"{root.GetProperty("ReachedLimitPetsInShelter").GetString()}");
+    //            printer.PrintInputAnyToContinue(root);
+    //            break;
+    //        }
+    //        if (petCount < AnimalFactory.MaxPets) // поправить! Смотри выше
+    //        {
+    //            bool exitOptionTwo = false;
+    //            while (petCount < AnimalFactory.MaxPets && exitOptionTwo == false)
+    //            {
+    //                Console.WriteLine($"We currently have {petCount} pets that need homes. " +
+    //               $"We can manage {(AnimalFactory.MaxPets - petCount)} more.");
+    //                Console.WriteLine("Do you want to enter info for another pet (y/n)");
 
-        case "3":
-            printer.PrintOptionInDevelop(root, readResult);
-            break;
-        case "4":
-            printer.PrintOptionInDevelop(root, readResult);
-            break;
-        case "5":
-            printer.PrintOptionInDevelop(root, readResult);
-            break;
-        case "6":
-            printer.PrintOptionInDevelop(root, readResult);
-            break;
-        case "7":
-            printer.PrintOptionInDevelop(root, readResult);
-            break;
-        case "8":
-            printer.PrintOptionInDevelop(root, readResult);
-            break;
-        case "exit":
-            exit = true;
-            break;
-        default:
-            Console.WriteLine($"{root.GetProperty("InvalidInput").GetString()}");
-            break;
-    }    
+    //                string readResultFromOptionTwo = RepeatedPrintText.ValidateForEmptyReadInput(root);
+    //                if (readResultFromOptionTwo == null) continue;
+
+    //                switch (readResultFromOptionTwo)
+    //                {
+    //                    case "y":
+    //                        petCount += 1;
+    //                        if (petCount >= AnimalFactory.MaxPets) { 
+    //                            Console.WriteLine($"{root.GetProperty("ReachedLimitPetsInShelter").GetString()}");
+    //                            break;
+    //                        }
+    //                        else
+    //                        {
+    //                            Console.WriteLine("Enter 'dog' or 'cat' to begin a new entry");
+    //                            string selectedAnimalSpecies = RepeatedPrintText.ValidateForEmptyReadInput(root);
+    //                            if (selectedAnimalSpecies == null) continue;
+
+    //                            Console.WriteLine("Enter 'dog' or 'cat' to begin a new entry");
+    //                            string selectedAnimalSpecies = RepeatedPrintText.ValidateForEmptyReadInput(root);
+    //                            if (selectedAnimalSpecies == null) continue;
+
+    //                            Console.WriteLine("Enter 'dog' or 'cat' to begin a new entry");
+    //                            string selectedAnimalSpecies = RepeatedPrintText.ValidateForEmptyReadInput(root);
+    //                            if (selectedAnimalSpecies == null) continue;
+
+
+    //                            Console.WriteLine("Enter 'dog' or 'cat' to begin a new entry");
+    //                            string selectedAnimalSpecies = RepeatedPrintText.ValidateForEmptyReadInput(root);
+    //                            if (selectedAnimalSpecies == null) continue;
+
+    //                            Console.WriteLine("Enter 'dog' or 'cat' to begin a new entry");
+    //                            string selectedAnimalSpecies = RepeatedPrintText.ValidateForEmptyReadInput(root);
+    //                            if (selectedAnimalSpecies == null) continue;
+
+    //                        }
+    //                            break;
+
+    //                    case "n":
+    //                        exitOptionTwo = true;
+    //                        break;
+
+    //                    default:
+    //                        Console.WriteLine($"{root.GetProperty("InvalidInput").GetString()}");
+    //                        break;
+    //                }
+    //            }
+
+    //        }
+    //        else
+    //        {
+    //            Console.WriteLine($"{root.GetProperty("ReachedLimitPetsInShelter").GetString()}"); 
+    //            printer.PrintInputAnyToContinue(root);
+    //        }
+    //        break;
+
+    //    case "3":
+    //        printer.PrintOptionInDevelop(root, readResult);
+    //        break;
+    //    case "4":
+    //        printer.PrintOptionInDevelop(root, readResult);
+    //        break;
+    //    case "5":
+    //        printer.PrintOptionInDevelop(root, readResult);
+    //        break;
+    //    case "6":
+    //        printer.PrintOptionInDevelop(root, readResult);
+    //        break;
+    //    case "7":
+    //        printer.PrintOptionInDevelop(root, readResult);
+    //        break;
+    //    case "8":
+    //        printer.PrintOptionInDevelop(root, readResult);
+    //        break;
+    //    case "exit":
+    //        exit = true;
+    //        break;
+    //    default:
+    //        Console.WriteLine($"{root.GetProperty("InvalidInput").GetString()}");
+    //        break;
+    //}    
 }
