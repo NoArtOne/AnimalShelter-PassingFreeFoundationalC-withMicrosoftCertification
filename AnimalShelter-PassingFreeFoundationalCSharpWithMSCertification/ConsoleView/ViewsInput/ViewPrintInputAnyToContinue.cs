@@ -6,7 +6,7 @@ namespace ConsoleView.ViewsInput;
 /// <summary>
 /// Необходим чтобы пользователь успел ознакомиться с контектом
 /// </summary>
-public class ViewInputAnyKeyToContinue() : ViewInput
+public class ViewInputAnyKeyToContinue() : ViewInputValidInput
 {
     public new string? Show()
     {

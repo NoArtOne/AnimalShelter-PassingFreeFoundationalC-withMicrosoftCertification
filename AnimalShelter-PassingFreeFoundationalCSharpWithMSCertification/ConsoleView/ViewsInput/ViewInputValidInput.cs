@@ -2,14 +2,22 @@
 
 namespace ConsoleView.ViewsInput;
 
-public class ViewInput : ViewBase
+public class ViewInputValidInput : ViewBase
 {
 
     public string TextToOutput { get; }
     /// <summary>
     /// Если выводить ничего
     /// </summary>
-    public ViewInput(string textToOutput)
+    public ViewInputValidInput()
+    {
+        TextToOutput = "";
+    }
+    /// <summary>
+    /// Если есть что выводить при ошибке пользователю :)
+    /// </summary>
+    /// <param name="textToOutput"></param>
+    public ViewInputValidInput(string textToOutput)
     {
         TextToOutput = textToOutput;
     }

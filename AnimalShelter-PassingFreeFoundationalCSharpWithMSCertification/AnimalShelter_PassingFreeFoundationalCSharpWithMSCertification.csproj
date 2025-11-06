@@ -25,4 +25,12 @@
 
   <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Users\timur\source\repos\AnimalShelter-PassingFreeFoundationalC#withMicrosoftCertification\AnimalShelter-PassingFreeFoundationalCSharpWithMSCertification\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\Users\timur\source\repos\AnimalShelter-PassingFreeFoundationalC#withMicrosoftCertification\AnimalShelter-PassingFreeFoundationalCSharpWithMSCertification\.editorconfig" />
+  </ItemGroup>
+
 </Project>

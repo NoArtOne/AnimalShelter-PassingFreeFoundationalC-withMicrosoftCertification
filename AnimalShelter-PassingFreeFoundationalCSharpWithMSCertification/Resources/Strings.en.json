@@ -1,12 +1,14 @@
 {
-  "EmptyInput": "Sorry, you entered nothing, please try again",
-  "InvalidInput": "Sorry, you entered an invalid input, please try again",
-  "WelcomeHeader": "\nWelcome to the Contoso PetFriends app. Your main menu options are:",
-  "MenuOptions": "\n\t1. List all of our current pet information\n\t2. Add a new animal friend to the ourAnimals array\n\t3. Ensure animal ages and physical descriptions are complete\n\t4. Ensure animal nicknames and personality descriptions are complete\n\t5. Edit an animal's age\n\t6. Edit an animal's personality description\n\t7. Display all CATS with a specified characteristic\n\t8. Display all DOGS with a specified characteristic",
-  "ExitInput": "Enter your selection number (or type Exit to exit the program)",
-  "SelectedOption": "You selected menu option ",
-  "NotificationPressToContinue": "Press the Enter key continue",
-  "ThisFeatureInDeveloping": "This app feature is coming soon",
-  "InputAnyKeyToContinue": "Press the Enter key to continue.",
-  "ReachedLimitPetsInShelter": "We have reached our limit on the number of pets that we can manage."
+    "EmptyInput": "Sorry, you entered nothing, please try again",
+    "InvalidInput": "Sorry, you entered an invalid input, please try again",
+    "WelcomeHeader": "\nWelcome to the Contoso PetFriends app. Your main menu options are:",
+    "MenuOptions": "\n\t1. List all of our current pet information\n\t2. Add a new animal friend to the ourAnimals array\n\t3. Ensure animal ages and physical descriptions are complete\n\t4. Ensure animal nicknames and personality descriptions are complete\n\t5. Edit an animal's age\n\t6. Edit an animal's personality description\n\t7. Display all CATS with a specified characteristic\n\t8. Display all DOGS with a specified characteristic",
+    "ExitInput": "Enter your selection number (or type Exit to exit the program)",
+    "SelectedOption": "You selected menu option ",
+    "NotificationPressToContinue": "Press the Enter key continue",
+    "ThisFeatureInDeveloping": "This app feature is coming soon",
+    "InputAnyKeyToContinue": "Press the Enter key to continue.",
+    "ReachedLimitPetsInShelter": "We have reached our limit on the number of pets that we can manage.",
+    "NotReachedLimitPetsInShelter": "We currently have {0} pets that need homes.\nWe can manage {1} more.\nDo you want to enter info for another pet (y/n)",
+    "EnterDogOrCat": "Enter 'dog' or 'cat' to begin a new entry"
 }

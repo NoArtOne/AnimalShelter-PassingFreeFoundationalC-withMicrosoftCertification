@@ -9,6 +9,10 @@ public class View : ViewBase
     {
         _text = text ?? throw new ArgumentNullException(nameof(text));
     }
+    public View()
+    {
+        _text = "";
+    }
 
     public void Show()
     {

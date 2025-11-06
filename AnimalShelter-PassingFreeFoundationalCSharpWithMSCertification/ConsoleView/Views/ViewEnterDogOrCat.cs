@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace ConsoleView.Views;
 
-public class ViewEmptyInput : View
+public class ViewEnterDogOrCat : View
 {
     public new void Show() => Console.WriteLine("{0}",
-        GetString("EmptyInput"));
+        GetString("EnterDogOrCat"));
 }

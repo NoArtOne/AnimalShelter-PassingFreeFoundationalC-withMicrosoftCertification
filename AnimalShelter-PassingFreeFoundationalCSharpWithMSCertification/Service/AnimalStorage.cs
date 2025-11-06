@@ -1,6 +1,7 @@
 ﻿using ENUM;
 using Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace Service;
 /// </summary>
 public class AnimalStorage
 {
-    private const int MaxPets = 8;
+    public const int MaxPets = 8;
     private Animal[] _animals = new Animal[MaxPets];
 
     public AnimalStorage() 
@@ -95,15 +96,21 @@ public class AnimalStorage
                 animal.AnimalPhysicalDescription = physicalDescription;
                 animal.AnimalSpecies = animalSpecies;
                 successAddNewAnimal = true;
-                Console.WriteLine("Successfully added a new animal to the shelter");
+                //Console.WriteLine("Successfully added a new animal to the shelter");
                 break;
             }
-            else
-            {
-                Console.WriteLine("Couldn't add a new animal. There are too many animals in the shelter");
-            }
         }
-// добавить get animals, update, delete, read list, добавить current_value_of_pets
+// добавить get animals, update, delete, добавить current_value_of_pets
+    }
+
+    public IEnumerable<Animal> GetAllAnimals()
+    {
+        return _animals.Where(a=>a?.AnimalID != null);
+    }
+
+    public int CurrentNumberOfAnimals()
+    {
+        return _animals.Where(a => a?.AnimalID != null).Count();
     }
 }
 
