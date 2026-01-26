@@ -1,4 +1,4 @@
-# AnimalShelter-PassingFreeFoundationalC#withMicrosoftCertification
+# PassingFreeFoundationalC#withMicrosoftCertification
 
 Project overview
 You're working on the Contoso Pets application, an application that helps place pets in new homes. The specifications for your application are:
